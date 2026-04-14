@@ -2,22 +2,17 @@
   hosts: localhost
   become: true
 
+  vars_files:
+    - vars/vault.yml
+
   roles:
     - packages
     - unattended-upgrades
+    - role: caddy
+      when: ansible_hostname == "CT105"
 
   tasks:
     - name: Create ansible-pull success marker
       ansible.builtin.copy:
         content: "ansible-pull last run: {{ ansible_date_time.iso8601 }}\n"
         dest: /etc/ansible-pull-last-run
-
-- name: Web server setup
-  hosts: webservers
-  become: true
-
-  vars_files:
-    - vars/vault.yml
-
-  roles:
-    - caddy
