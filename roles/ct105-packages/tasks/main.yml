@@ -1,6 +1,0 @@
-- name: Install CT105-specific packages
-  ansible.builtin.apt:
-    name:
-      - neovim
-    state: present
-    update_cache: true

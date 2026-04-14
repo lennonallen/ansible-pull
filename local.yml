@@ -8,5 +8,3 @@
   roles:
     - packages
     - unattended-upgrades
-    - role: ct105-packages
-      when: ansible_hostname == "CT105"
