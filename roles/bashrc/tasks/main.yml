@@ -1,0 +1,7 @@
+---
+- name: Add ~/.local/bin to PATH
+  become: false
+  ansible.builtin.lineinfile:
+    path: /home/lennon/.bashrc
+    line: 'export PATH="$HOME/.local/bin:$PATH"'
+    state: present

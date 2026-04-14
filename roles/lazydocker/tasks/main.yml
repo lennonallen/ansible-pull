@@ -1,0 +1,6 @@
+---
+- name: Install lazydocker
+  become: false
+  ansible.builtin.shell:
+    cmd: curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+    creates: /home/lennon/.local/bin/lazydocker

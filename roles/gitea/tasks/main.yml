@@ -1,0 +1,17 @@
+---
+- name: Create Gitea directory
+  ansible.builtin.file:
+    path: /opt/gitea
+    state: directory
+    mode: "0755"
+
+- name: Copy docker-compose file
+  ansible.builtin.copy:
+    src: gitea/docker-compose.yml
+    dest: /opt/gitea/docker-compose.yml
+    mode: "0644"
+
+- name: Start Gitea
+  community.docker.docker_compose_v2:
+    project_src: /opt/gitea
+    state: present

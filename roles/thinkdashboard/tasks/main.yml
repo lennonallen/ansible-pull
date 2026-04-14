@@ -1,0 +1,17 @@
+---
+- name: Create ThinkDashboard directory
+  ansible.builtin.file:
+    path: /opt/thinkdashboard
+    state: directory
+    mode: "0755"
+
+- name: Copy docker-compose file
+  ansible.builtin.copy:
+    src: thinkdashboard/docker-compose.yml
+    dest: /opt/thinkdashboard/docker-compose.yml
+    mode: "0644"
+
+- name: Start ThinkDashboard
+  community.docker.docker_compose_v2:
+    project_src: /opt/thinkdashboard
+    state: present
