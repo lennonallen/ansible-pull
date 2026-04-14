@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  # vars_files:
+  #   - vars/vault.yml
+
+  roles:
+    - packages
+    - unattended-upgrades

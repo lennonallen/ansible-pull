@@ -1,10 +1,23 @@
-- hosts: localhost
-  connection: local
+- name: Server Setup
+  hosts: hosts
   become: true
 
-  # vars_files:
-  #   - vars/vault.yml
+  vars_files:
+    - vars/vault.yml
+
+  vars:
+    github_user: lennonallen
+    github_repo: ansible-pull
+
+  pre_tasks:
+    - name: Update all packages
+      tags: update
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
 
   roles:
+    - ansible-user
+    - ansible-pull-setup
     - packages
     - unattended-upgrades
