@@ -1,5 +1,5 @@
 - name: Server Setup
-  hosts: hosts
+  hosts: all
   become: true
 
   vars_files:
