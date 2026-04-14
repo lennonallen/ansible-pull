@@ -2,8 +2,8 @@
   connection: local
   become: true
 
-  vars_files:
-    - vars/vault.yml
+  # vars_files:
+  #   - vars/vault.yml
 
   roles:
     - packages
