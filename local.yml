@@ -8,8 +8,6 @@
   roles:
     - packages
     - unattended-upgrades
-    - role: caddy
-      when: ansible_hostname == "CT105"
 
   tasks:
     - name: Create ansible-pull success marker
