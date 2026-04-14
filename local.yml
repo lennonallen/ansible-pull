@@ -1,5 +1,6 @@
 - name: Server Setup
   hosts: all
+  connection: local
   become: true
 
   vars_files:
