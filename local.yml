@@ -1,21 +1,9 @@
-- name: Server Setup
-  hosts: temp
+- name: Ansible Pull
+  hosts: localhost
   become: true
 
-  vars_files:
-    - vars/vault.yml
-
-  vars:
-    github_user: lennonallen
-    github_repo: ansible-pull
-
-  pre_tasks:
-    - name: Update all packages
-      tags: update
-      ansible.builtin.apt:
-        upgrade: dist
-        update_cache: true
-
-  roles:
-    - ansible-user
-    - ansible-pull-setup
+  tasks:
+    - name: Create ansible-pull success marker
+      ansible.builtin.copy:
+        content: "ansible-pull last run: {{ ansible_date_time.iso8601 }}\n"
+        dest: /etc/ansible-pull-last-run
