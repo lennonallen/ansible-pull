@@ -1,5 +1,5 @@
-- name: Ansible Pull
-  hosts: localhost
+- hosts: localhost
+  connection: local
   become: true
 
   vars_files:
@@ -8,9 +8,5 @@
   roles:
     - packages
     - unattended-upgrades
-
-  tasks:
-    - name: Create ansible-pull success marker
-      ansible.builtin.copy:
-        content: "ansible-pull last run: {{ ansible_date_time.iso8601 }}\n"
-        dest: /etc/ansible-pull-last-run
+    - role: ct105-packages
+      when: ansible_hostname == "CT105"
