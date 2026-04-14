@@ -4,6 +4,7 @@
 
   roles:
     - packages
+    - unattended-upgrades
 
   tasks:
     - name: Create ansible-pull success marker
