@@ -17,6 +17,22 @@
     name: sudo
     state: present
 
+- name: Ensure .ssh directory exists for ansible user
+  ansible.builtin.file:
+    path: /home/ansy/.ssh
+    state: directory
+    owner: ansy
+    group: ansy
+    mode: '0700'
+
+- name: Deploy SSH private key for ansible user
+  ansible.builtin.copy:
+    content: "{{ vault_ansy_ssh_private_key }}"
+    dest: /home/ansy/.ssh/id_ed25519
+    owner: ansy
+    group: ansy
+    mode: '0600'
+
 - name: Grant ansible user passwordless sudo
   ansible.builtin.copy:
     content: "ansy ALL=(ALL) NOPASSWD:ALL\n"

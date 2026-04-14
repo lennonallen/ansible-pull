@@ -1,0 +1,18 @@
+- name: Install ansible
+  ansible.builtin.apt:
+    name: ansible
+    state: present
+
+- name: Add GitHub to known_hosts for ansible user
+  ansible.builtin.known_hosts:
+    name: github.com
+    key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"
+    path: /home/ansy/.ssh/known_hosts
+    state: present
+
+- name: Add ansible-pull cron job
+  ansible.builtin.cron:
+    name: ansible-pull
+    user: ansy
+    minute: "*/10"
+    job: ansible-pull -U git@github.com:{{ github_user }}/{{ github_repo }}.git

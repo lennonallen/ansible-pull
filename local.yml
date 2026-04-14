@@ -2,6 +2,13 @@
   hosts: temp
   become: true
 
+  vars_files:
+    - vars/vault.yml
+
+  vars:
+    github_user: lennonallen
+    github_repo: ansible-pull
+
   pre_tasks:
     - name: Update all packages
       tags: update
@@ -11,3 +18,4 @@
 
   roles:
     - ansible-user
+    - ansible-pull-setup
