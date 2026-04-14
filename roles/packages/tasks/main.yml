@@ -1,0 +1,10 @@
+- name: Install packages
+  ansible.builtin.apt:
+    name:
+      - curl
+      - git
+      - htop
+      - btop
+      - micro
+    state: present
+    update_cache: true

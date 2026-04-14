@@ -2,6 +2,9 @@
   hosts: localhost
   become: true
 
+  roles:
+    - packages
+
   tasks:
     - name: Create ansible-pull success marker
       ansible.builtin.copy:
