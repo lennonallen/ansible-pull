@@ -6,5 +6,6 @@
       - htop
       - btop
       - micro
+      - vim
     state: present
     update_cache: true
