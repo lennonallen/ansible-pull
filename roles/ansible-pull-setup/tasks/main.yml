@@ -24,4 +24,4 @@
     name: ansible-pull
     user: ansy
     minute: "*/10"
-    job: ansible-pull -o -U git@github.com:{{ github_user }}/{{ github_repo }}.git -i localhost,
+    job: ansible-pull -o -c local -U git@github.com:{{ github_user }}/{{ github_repo }}.git -i localhost,
