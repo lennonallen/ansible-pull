@@ -1,0 +1,13 @@
+- name: Server Setup
+  hosts: temp
+  become: true
+
+  pre_tasks:
+    - name: Update all packages
+      tags: update
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
+
+  roles:
+    - ansible-user
