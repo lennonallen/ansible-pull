@@ -1,0 +1,7 @@
+{
+    acme_dns cloudflare {{ vault_cloudflare_api_token }}
+}
+
+memos.lennon-allen.com {
+    reverse_proxy 192.168.0.253:9030
+}
