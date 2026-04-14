@@ -16,6 +16,11 @@
         upgrade: dist
         update_cache: true
 
+    - name: Install git
+      ansible.builtin.apt:
+        name: git
+        state: present
+
   roles:
     - ansible-user
     - ansible-pull-setup
