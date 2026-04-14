@@ -1,5 +1,5 @@
 - name: Server Setup
-  hosts: temp
+  hosts: hosts
   become: true
 
   vars_files:
@@ -15,11 +15,6 @@
       ansible.builtin.apt:
         upgrade: dist
         update_cache: true
-
-    - name: Install git
-      ansible.builtin.apt:
-        name: git
-        state: present
 
   roles:
     - ansible-user
