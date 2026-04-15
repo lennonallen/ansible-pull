@@ -1,23 +1,12 @@
-- name: Server Setup
-  hosts: all
+- hosts: localhost
+  connection: local
   become: true
 
-  vars_files:
-    - vars/vault.yml
-
-  vars:
-    github_user: lennonallen
-    github_repo: ansible-pull
-
-  pre_tasks:
-    - name: Update all packages
-      tags: update
-      ansible.builtin.apt:
-        upgrade: dist
-        update_cache: true
+  # vars_files:
+  #   - vars/vault.yml
 
   roles:
-    - ansible-user
-    - ansible-pull-setup
     - packages
     - unattended-upgrades
+    - role: docker
+      when: "'docker' in group_names"
