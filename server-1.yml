@@ -1,0 +1,7 @@
+- import_playbook: local.yml
+
+- hosts: all
+  connection: local
+  become: true
+
+  roles: []
