@@ -3,7 +3,3 @@
 - hosts: all
   connection: local
   become: true
-
-  roles:
-    - docker
-    - thinkdashboard
