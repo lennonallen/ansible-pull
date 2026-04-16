@@ -8,5 +8,3 @@
   roles:
     - packages
     - unattended-upgrades
-    - role: docker
-      when: "'docker' in group_names"
